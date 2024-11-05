@@ -1,4 +1,5 @@
 <%@ page import="java.util.*, com.luv2code.web.jdbc.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,6 @@
 	
 	<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
-<%
-	List<Student> theStudents = (List<Student>) request.getAttribute("STUDENT_LIST");
-%>
-
 <body>
 
 	<div id="wrapper">
@@ -28,14 +25,13 @@
 					<th>Email</th>	
 				</tr>
 				
-				<%for (Student student : theStudents){%>
-						<tr>
-							<td> <%=student.getFirstName() %> </td>
-							<td> <%=student.getLastName() %> </td>
-							<td> <%=student.getEmail() %> </td>
-						</tr>
-				<%} %>
-				
+				<c:forEach var="tempStudent" items="${STUDENT_LIST}">
+					<tr>
+						<td>${tempStudent.firstName}</td>
+						<td>${tempStudent.lastName}</td>
+						<td>${tempStudent.email}</td>
+					</tr>
+				</c:forEach>
 				
 			</table>
 		</div>
