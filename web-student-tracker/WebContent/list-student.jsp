@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 	<title>Student Tracker App</title>
+	
+	<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <%
 	List<Student> theStudents = (List<Student>) request.getAttribute("STUDENT_LIST");
