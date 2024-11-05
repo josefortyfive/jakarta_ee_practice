@@ -24,32 +24,32 @@ public class StudentDbUtil {
 		ResultSet myRs = null;
 		
 		try {
+				
+			// get a connection
+			myConn = dataSource.getConnection();
 			
-		// get a connection
-		myConn = dataSource.getConnection();
-		
-		// create sql statement
-		
-		String sql = "SELECT * FROM student order by last_name";
-		
-		myStmt = myConn.createStatement();
-		// execute query
-		myRs = myStmt.executeQuery(sql);
-		
-		// process result set
-		
-		while(myRs.next()) {
+			// create sql statement
 			
-			// retrieve data from result set row
+			String sql = "SELECT * FROM student order by last_name";
 			
-			int id = myRs.getInt("id");
-			String firstName = myRs.getString("first_name");
-			String lastName = myRs.getString("last_name");
-			String email = myRs.getString("email");
+			myStmt = myConn.createStatement();
+			// execute query
+			myRs = myStmt.executeQuery(sql);
 			
-			// create new student object
-			Student tempStudent = new Student(id, firstName, lastName, email);
-			students.add(tempStudent);
+			// process result set
+			
+			while(myRs.next()) {
+				
+				// retrieve data from result set row
+				
+				int id = myRs.getInt("id");
+				String firstName = myRs.getString("first_name");
+				String lastName = myRs.getString("last_name");
+				String email = myRs.getString("email");
+				
+				// create new student object
+				Student tempStudent = new Student(id, firstName, lastName, email);
+				students.add(tempStudent);
 			
 		}
 		
