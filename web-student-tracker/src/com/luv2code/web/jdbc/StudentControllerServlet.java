@@ -40,12 +40,52 @@ public class StudentControllerServlet extends HttpServlet {
 		// list the students ... in MVC fashion
 
 		try {
-			listStudents(request, response);
-		} catch (Exception e) {
+			
+			// read the command parameter
+			String theCommand = request.getParameter("command");
+			
+			// route to the appropriate method
+			
+			if(theCommand == null) {
+				theCommand = "LIST";
+
+			}
+			
+			switch(theCommand) {
+				case "LIST":
+					listStudents(request, response);
+					break;
+				case "ADD":
+					addStudent(request, response);
+					break;
+					
+				default:
+					listStudents(request, response);
+			}
+	
+			
+		} 
+		
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+
+	private void addStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+	
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		
+		Student theStudent = new Student(firstName, lastName, email);
+		
+		studentDbUtil.addStudent(theStudent);
+		
+		listStudents(request, response);
+		
 	}
 
 	private void listStudents(HttpServletRequest request, HttpServletResponse response) throws Exception {
