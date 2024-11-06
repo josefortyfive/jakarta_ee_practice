@@ -110,7 +110,7 @@ public class StudentDbUtil {
 		
 	}
 
-	public Student getStudents(String theStudentId) throws Exception  {
+	public Student getStudent(String theStudentId) throws Exception  {
 		Student theStudent = null;
 		
 		Connection myConn = null;
@@ -127,7 +127,7 @@ public class StudentDbUtil {
 			myConn = dataSource.getConnection();
 			
 			// create sql to get selected student
-			String sql = "SELECT * FROM STUDENT where id=?";
+			String sql = "SELECT * FROM student WHERE id=?";
 			// create prepared statement
 			myStmt = myConn.prepareStatement(sql);
 			

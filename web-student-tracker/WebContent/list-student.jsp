@@ -40,7 +40,7 @@
 					
 					<c:url var="tempLink" value="StudentControllerServlet">
 						<c:param name="command" value="LOAD" />
-						<c:param name="studentId" value="${tempLink}"/>
+						<c:param name="studentId" value="${tempStudent.id}"/>
 					
 					</c:url>
 					<tr>
