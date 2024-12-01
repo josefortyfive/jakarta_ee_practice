@@ -25,9 +25,11 @@ public class StudentService {
 	}
 	
 	public void listStudent() throws ServletException, IOException {
+		
 		List<Student> listStudent = new ArrayList<>();
 		listStudent.add(new Student("Edmar", "Canin", "edmar.canin@gmail.com"));
 		listStudent.add(new Student("Arlene", "Navales", "arlene.navales@gmail.com"));
+		listStudent.add(new Student("Michael Aiden", "Canin", "aiden@gmail.com"));
 		
 		request.setAttribute("listStudent", listStudent);
 	
