@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.learning.dao.StudentDAO;
 import com.learning.entity.Student;
 
 import jakarta.servlet.RequestDispatcher;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class StudentService {
 
 	private Student student;
+	private StudentDAO studentDAO;
 	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
@@ -22,14 +24,13 @@ public class StudentService {
 		super();
 		this.request = request;
 		this.response = response;
+		studentDAO = new StudentDAO();
 	}
 	
 	public void listStudent() throws ServletException, IOException {
 		
-		List<Student> listStudent = new ArrayList<>();
-		listStudent.add(new Student("Edmar", "Canin", "edmar.canin@gmail.com"));
-		listStudent.add(new Student("Arlene", "Navales", "arlene.navales@gmail.com"));
-		listStudent.add(new Student("Michael Aiden", "Canin", "aiden@gmail.com"));
+		List<Student> listStudent = studentDAO.listAll();
+		
 		
 		request.setAttribute("listStudent", listStudent);
 	
