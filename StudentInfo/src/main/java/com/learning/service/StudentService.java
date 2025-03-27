@@ -1,7 +1,6 @@
 package com.learning.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.learning.dao.StudentDAO;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class StudentService {
 
-	private Student student;
 	private StudentDAO studentDAO;
 	
 	private HttpServletRequest request;
